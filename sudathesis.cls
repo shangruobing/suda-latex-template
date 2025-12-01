@@ -526,11 +526,11 @@ BoldItalicFont=timesbi.ttf,
         }
         \vskip 20bp
         \begin{center}
-            \includegraphics[width=200bp]{img/suda.ps}
+            \includegraphics[width=200bp]{img/suda.pdf}
             \vskip 20bp
             \centerline{\zihao{0}\songti 硕士学位论文}
             \vskip 10bp
-            \centerline{\zihao{2}\songti （学术学位）}
+            \centerline{\zihao{2}\songti （\suda@degreetype 学位）}
             \includegraphics[width=130pt]{img/SchoolMark.jpg}
             ~~\\
             \vskip 20bp
@@ -538,8 +538,7 @@ BoldItalicFont=timesbi.ttf,
             \begin{tabular}{p{0.5cm}p{9.2cm}}
                 &\dlmu[9.2cm]{\zihao{4}\hei{\suda@thesistitle}}\\ %[.4ex]%\hline
                 &\dlmu[9.2cm]{} \\
-                % english title 需要手动输入
-                &\dlmu[9.2cm]{\zihao{4}{Modify Enlgish Title in Line 542 of sudathesis.cls}} \\%[.4ex]
+                &\dlmu[9.2cm]{\zihao{4}{\suda@thesistitleeng}} \\%[.4ex]
             \end{tabular}
             \vskip 20bp
             ~~\\
@@ -547,7 +546,10 @@ BoldItalicFont=timesbi.ttf,
                 \zihao{4}\hei
                 \begin{tabular}{p{3cm}p{7cm}}
                     研~究~生~姓~名&\ulinecvcbc{\suda@thesisauthor}\\[.4ex]
-                    指导教师姓名&\ulinecvcbc{\suda@teacher \quad \suda@subteacher}\\[.4ex]
+                    指导教师姓名 & \ulinecvcbc{%
+                        \suda@teacher%
+                        \ifx\suda@subteacher\empty\else\quad \suda@subteacher\fi%
+                    }\\[.4ex]
                     专~~~业~~~名~~称&\ulinecvcbc{\suda@major}\\[.4ex]
                     研~~~究~~~方~~向&\ulinecvcbc{\suda@direct}\\[.4ex]
                     所~~~在~~~院~~部&\ulinecvcbc{\suda@school}\\[.4ex]
@@ -556,7 +558,6 @@ BoldItalicFont=timesbi.ttf,
             }
         \end{center}
     \end{titlepage}
-
 }
 \usepackage{afterpage}
 \newcommand\myemptypage{
@@ -603,7 +604,7 @@ BoldItalicFont=timesbi.ttf,
         \vskip 125bp
         \zihao{3}{
         \suda@schooleng \\[1.8ex]
-        \suda@universityeng , Beijing, China}
+        \suda@universityeng , Suzhou, China}
     \end{center}
 }
 
@@ -624,7 +625,7 @@ BoldItalicFont=timesbi.ttf,
 % 英文摘要
 \newenvironment{eabstract}{
     % \newpage1
-    \chapter*{\zihao{-2}{\textbf{Modify Enlgish Abstract Title in Line 627 of sudathesis.cls}} \\ 
+    \chapter*{\zihao{-2}{\textbf{\suda@thesistitleeng}} \\ 
     \vspace{2ex}
     \centerline{\zihao{-2}{\textbf{Abstract}}}}
     \setlength{\parindent}{24bp}
@@ -644,8 +645,8 @@ BoldItalicFont=timesbi.ttf,
 %%%%%%%%%% settings for custom pages %%%%%%%%%%
 % 首页重定义
 \renewcommand{\maketitle}{%
-    % 盲审使用pdf自己定义的封面，最终提交时去掉注释，修改封面
-    %\titlech
+    \titlech
+    \titleeng
     \songti
     \zihao{-4}
     \clearemptydoublepage
@@ -675,7 +676,11 @@ BoldItalicFont=timesbi.ttf,
     \def\suda@major{#1}
     \def\suda@majoreng{#2}
 }
-
+% 学位类型
+\def\suda@degreetype{}
+\newcommand{\degreetype}[1]{%
+    \def\suda@degreetype{#1}
+}
 % 方向
 \def\suda@direct{}
 \def\suda@directeng{}
@@ -700,6 +705,12 @@ BoldItalicFont=timesbi.ttf,
 \newcommand{\thesisauthor}[2]{%
     \def\suda@thesisauthor{#1}
     \def\suda@thesisauthoreng{#2}
+}
+% 是否有副指导老师，默认没有
+\newif\ifsuda@twoteacher
+\suda@twoteacherfalse
+\newcommand{\twoteacher}{%
+    \suda@twoteachertrue
 }
 % 指导老师
 \def\suda@teacher{}
@@ -792,8 +803,6 @@ BoldItalicFont=timesbi.ttf,
     \def\suda@thesisdateyear{#1}
     \def\suda@thesisdatemonth{#2}
 }
-
-
 % 保密等级
 \def\suda@mibao{}
 \newcommand{\mibao}[1]{%

@@ -21,7 +21,7 @@
 \usepackage{stfloats}     % 跨栏图片*/表格*美化
 %\usepackage{svg}           % 支持插入矢量图
 \usepackage{pifont}        % 勾叉符号
-\usepackage{CJKutf8}    % 支持Unicode字符 ├ └ ─
+% \usepackage{CJKutf8}    % 支持Unicode字符 ├ └ ─ # Package ctexhook: Package CJKutf8' can not be loaded with xeCJK'.
 \usepackage[skins]{tcolorbox}  % 文本框
 \tcbuselibrary{breakable}% 支持文本框跨页
 \usepackage{boites, boites_exemples}
@@ -30,21 +30,30 @@
 %\usepackage[final]{changes} % 关闭修订模式
 % == ===================== ==
 
-\begin{document}
-%\maketitle
+\newif\iffinalversion
+% 设置为送审版
+% \finalversionfalse
+% 设置为最终版
+\finalversiontrue
 
 % 论文相关信息
-\include{content/0_0_info}
+\input{content/0_0_info.tex}
 
-% 【PDF】
-% 送审版
-\includepdf[pages=-]{pdf/DEMO_送审封面.pdf}
+\begin{document}
 
-% 最终版
-%\includepdf[pages=-]{pdf/DEMO_最终论文封面.pdf}
-%\includepdf[pages=-]{pdf/blank.pdf}
-%\includepdf[pages=-]{pdf/DEMO_独创声明.pdf}
-%\includepdf[pages=-]{pdf/blank.pdf}
+\iffinalversion
+    % 最终版
+    % 最终版通过maketitle来生成封面
+    \maketitle
+    \includepdf[pages=-]{pdf/DEMO_独创声明.pdf}
+    \includepdf[pages=-]{pdf/blank.pdf}
+    \includepdf[pages=-]{pdf/DEMO_授权声明.pdf}
+    \includepdf[pages=-]{pdf/blank.pdf}
+\else
+    % 送审版
+    % 送审版通过导入pdf文件来生成封面
+    \includepdf[pages=-]{pdf/DEMO_送审封面.pdf}
+\fi
 
 % 【摘要】
 % 正文前页码是大写罗马字母
