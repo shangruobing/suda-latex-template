@@ -1,15 +1,74 @@
 # 苏州大学硕士学位论文模板
 
+## 特性
+
+- Overleaf, TeXPage, TeXLive 和 MacTex 均编译正常
+- 完全遵循苏大研究生学位论文基本格式
+- 内置字体文件
+- 详细的注释，若后续学校变更排版要求，方便自行修改
+
+## 快速开始
+
+1. 克隆或下载本仓库
+2. 编辑 `content/0_0_info.tex` 填写论文基本信息
+3. 使用VSCode或终端编译（见下文详细说明）
+
 ## 目录介绍
 
-- content/ 文件夹内编写论文主要内容
-  - 0_0_info.tex 论文元信息，如作者姓名、所属机构等
-- fonts/ 编译 PDF 所需的字体文件
-- img/ 必要的图片，如校徽等
-- pdf/ 额外的 pdf 文件，在 main.tex 中导入
-- reference.bib 参考文献
+```text
+├── content/                  # 论文内容
+│   ├── 0_0_info.tex          # 论文元信息（必填）
+│   ├── 0_1_abstract-zh.tex   # 中文摘要
+│   ├── 1_introduction.tex    # 引言
+│   └── ...
+├── fonts/                    # 字体文件
+├── img/                      # 图片资源（校徽等）
+├── pdf/                      # 额外的 pdf 文件
+├── main.tex                  # 主文档
+├── reference.bib             # 参考文献
+├── sudathesis.bst            # 参考文献样式文件
+├── sudathesis.cls            # 模板类文件
+└── ...
+```
 
-## 使用
+## 推荐环境
+
+- 安装 `TeX` 发行版，`TexLive` 或 `MacTex`
+- 使用 `Visual Studio Code` 编辑器进行编辑，并安装 `LaTeX Workshop` 插件
+
+### 相关下载链接
+
+- [TeXLive官网](https://tug.org/texlive/)
+- [TeXLive清华镜像](https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/)
+- [Visual Studio Code官网](https://code.visualstudio.com/)
+
+## 使用VSCode进行编译（推荐）
+
+首先配置 `LaTeX Workshop` 插件：
+
+1. 在 `VSCode` 中，打开设置（`Ctrl + ,`）
+2. 搜索 `latex-workshop.latex.recipes`
+3. 点击 `在 settings.json 中编辑`，添加如下内容：
+
+```json
+{
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "xe->bibtex->xe*2",
+      "tools": ["xelatex", "bibtex", "xelatex", "xelatex"]
+    }
+  ]
+}
+```
+
+插件配置完成后，按以下步骤编译并生成PDF：
+
+1.  点击侧边栏的 `TEX` 图标
+2.  选择 `COMMANDS`
+3.  点击 `Build LaTeX project`
+4.  在弹出菜单中，选择编译方案：`Recipe: xe->bibtex->xe*2`
+
+## 使用终端进行编译
 
 **使用 xelatex 进行编译，命令如下：**
 
@@ -22,16 +81,9 @@ xelatex main.tex
 
 **清理编译结果文件，命令如下：**
 
-````shell
+```shell
 make clear
-````
-
-## 特性
-
-- Overleaf, TexPage 和 MacTex(TexLive 的 mac 版本)均编译正常
-- 完全遵循苏大研究生学位论文基本格式
-- 内置字体文件
-- 详细的注释，若后续学校变更排版要求，方便自行修改。
+```
 
 ## 参考
 
@@ -43,8 +95,13 @@ make clear
 
 ### 仓库
 
-https://github.com/huhamhire/sudathesis
+- https://github.com/huhamhire/sudathesis
 
-https://github.com/tianhaoo/Soochow-University-Thesis-Overleaf-LaTeX-Template
+- https://github.com/tianhaoo/Soochow-University-Thesis-Overleaf-LaTeX-Template
 
-https://github.com/shadowofgost/sudathesis-soochow-university-latex-template
+- https://github.com/shadowofgost/sudathesis-soochow-university-latex-template
+- https://github.com/fairyshine/SUDA_TeX_Template
+
+## 反馈
+
+如果您发现任何问题或有改进建议，请在GitHub仓库提交Issue。
