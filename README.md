@@ -105,3 +105,32 @@ make clear
 ## 反馈
 
 如果您发现任何问题或有改进建议，请在GitHub仓库提交Issue。
+
+## 常见问题
+
+### 参考文献显示异常或不显示
+
+**问题**：在 VSCode 中使用 LaTeX Workshop 的 `Recipe: xe->bibtex->xe*2` 编译后，参考文献显示异常或不显示。
+
+**原因**：项目文件中存在魔法注释，例如：
+
+```latex
+% !TEX program=xelatex
+```
+
+该注释会覆盖编译配方，使插件跳过 `bibtex` 步骤，导致参考文献无法正确生成。
+
+**解决方法**：
+
+1. **删除项目中的魔法注释**：
+
+```latex
+% !TEX program=xelatex
+```
+
+2. **在插件中设置禁用魔法注释**：
+   - 打开 VSCode 设置
+   - 搜索 `latex-workshop.latex.build.enableMagicComments`
+   - 将其设置为 `false`
+
+完成后重新使用 `Recipe: xe->bibtex->xe*2` 编译，即可正确生成参考文献。
