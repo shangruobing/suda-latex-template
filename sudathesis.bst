@@ -1595,7 +1595,7 @@ FUNCTION {incollection}
     { format.year "year" output.check }
     'skip$
   if$
-  % format.extracted.pages bbl.colon output.after
+  format.extracted.pages bbl.colon output.after
   % format.urldate "" output.after
   % output.url
   % output.doi

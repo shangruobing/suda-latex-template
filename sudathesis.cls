@@ -4,15 +4,13 @@
 %%%%%%%%%%% 段落缩进 %%%%%%%%%%%%%%
 %设置：全文段落都有缩进
 \usepackage{indentfirst}
-\let\@afterindentfalse\@afterindenttrue \@afterindenttrue 
+\let\@afterindentfalse\@afterindenttrue \@afterindenttrue
 
 %%%%%%%%%% class clarification %%%%%%%%%%
 % 模板声明
 
 \NeedsTeXFormat{LaTeX2e}[2007/10/19]
-\ProvidesClass{sudathesis}
-              [2012/07/06 v0.8
-The LaTeX template for thesis of suda]
+\ProvidesClass{sudathesis}[2012/07/06 v0.8 The LaTeX template for thesis of suda]
 \typeout{Document Class `sudathesis' by CHAOJIAYUAN (2017/03)}
 
 %%%%%%%%%% class options %%%%%%%%%%
@@ -49,8 +47,11 @@ The LaTeX template for thesis of suda]
 
 % \setmainfont{Times New Roman}
 % * 主要英文字体：使用本地的【times】字体文件
-\setmainfont[Path=fonts/,BoldFont=timesbd.ttf,ItalicFont=timesi.ttf,
-BoldItalicFont=timesbi.ttf,
+\setmainfont[
+    Path=fonts/,
+    BoldFont=timesbd.ttf,
+    ItalicFont=timesi.ttf,
+    BoldItalicFont=timesbi.ttf,
 ]{times.ttf}
 
 
@@ -67,16 +68,16 @@ BoldItalicFont=timesbi.ttf,
 
 % * 使用本地的【楷体】字体文件
 \setCJKfamilyfont{kai}[Path=fonts/]{simkai.ttf}
-\newcommand{\kai}{\CJKfamily{kai}}  
+\newcommand{\kai}{\CJKfamily{kai}}
 
 % * 使用本地的【宋体】字体文件
 \setCJKfamilyfont{song}[Path=fonts/]{simsun.ttc}
-\newcommand{\song}{\CJKfamily{song}} 
+\newcommand{\song}{\CJKfamily{song}}
 
 \newcommand{\xiaochuhao}{\fontsize{32pt}{\baselineskip}\selectfont}
-\newcommand{\xiaoer}{\fontsize{18pt}{27pt}\selectfont}          % 小二, 1.5行距
-\newcommand{\sihao}{\fontsize{14pt}{21pt}\selectfont}            % 四号, 1.5 倍行距
-\newcommand{\xiaosi}{\fontsize{12pt}{18pt}\selectfont}  % 小四, 1.5倍行距
+\newcommand{\xiaoer}{\fontsize{18pt}{27pt}\selectfont}      % 小二, 1.5倍行距
+\newcommand{\sihao}{\fontsize{14pt}{21pt}\selectfont}       % 四号, 1.5倍行距
+\newcommand{\xiaosi}{\fontsize{12pt}{18pt}\selectfont}      % 小四, 1.5倍行距
 
 
 %%%%%%%%%% color %%%%%%%%%%
@@ -169,7 +170,7 @@ BoldItalicFont=timesbi.ttf,
 
 % \linespread{1.5}\selectfont    %1.5行距
 % Word 中的“单倍行距”跟字体有关，中易几个字体的“单倍行距”是字号的约 1.30 倍，Times New Roman 的是字号的 1.15倍。Word 中的 n 倍行距是在“单倍行距”上再乘的倍数。比如中易宋体 1.5 倍行距，是字号的 1.3 * .5 = 1.95 倍。
-%ctex 设置的 \baselineskip 已经是字号的 1.2 倍，如果设置 \linespread{1.5}\selectfont，行距是字号的 1.2 * 1.5 = 1.8 倍。正确的是 \linespread{1.625}\selectfont，其中 1.625 = 1.3 * 1.5 / 1.2，而且需要 \selectfont 才能生效。当然这里假设是中易字体，如果是西文字体，其中的 1.3 也要换成对应字体的倍数，
+% ctex 设置的 \baselineskip 已经是字号的 1.2 倍，如果设置 \linespread{1.5}\selectfont，行距是字号的 1.2 * 1.5 = 1.8 倍。正确的是 \linespread{1.625}\selectfont，其中 1.625 = 1.3 * 1.5 / 1.2，而且需要 \selectfont 才能生效。当然这里假设是中易字体，如果是西文字体，其中的 1.3 也要换成对应字体的倍数，
 % https://github.com/TheNetAdmin/zjuthesis/issues/125
 \linespread{1.625}\selectfont
 \setlength{\topskip}{0em}
@@ -177,7 +178,7 @@ BoldItalicFont=timesbi.ttf,
 \setlength{\parskip}{0.2\baselineskip}   %段间距
 \setlength{\floatsep}{3pt plus 0.1pt minus 0.1pt}      % 图形之间或图形与正文之间的距离
 \setlength{\abovecaptionskip}{10pt plus 1pt minus 1pt} % 图形中的图与标题之间的距离
-\setlength{\belowcaptionskip}{3pt plus 1pt minus 1pt} % 表格中的表与标题之间的距离
+\setlength{\belowcaptionskip}{3pt plus 1pt minus 1pt}  % 表格中的表与标题之间的距离
 
 
 %%%%%%%%%% title %%%%%%%%%%
@@ -194,34 +195,34 @@ BoldItalicFont=timesbi.ttf,
 % 格式
 \ctexset{
     chapter={  %居中，小二黑体，段前后0.5行
-        format={\centering\zihao{-2}\hei},
-        nameformat={},
-        aftername={\quad},
-        titleformat={},
-        beforeskip={0em}, %长度，其绝对值表示标题到上文之间的距离
-        afterskip={0.5\baselineskip},
-    },
+      format={\centering\zihao{-2}\hei},
+      nameformat={},
+      aftername={\quad},
+      titleformat={},
+      beforeskip={0em}, %长度，其绝对值表示标题到上文之间的距离
+      afterskip={0.5\baselineskip},
+     },
     section={ %左对齐，4号黑体，前后0.5行
-        format={\raggedright\zihao{4}\hei},
-        aftername={\quad},
-        beforeskip={0.5\baselineskip},
-        afterskip={0.5\baselineskip},
-    },
+      format={\raggedright\zihao{4}\hei},
+      aftername={\quad},
+      beforeskip={0.5\baselineskip},
+      afterskip={0.5\baselineskip},
+     },
     subsection={ %左对齐，小4，楷体加粗，前后0.5行
-        format={\raggedright\zihao{-4}\kai\textbf},
-        aftername={\quad},
-        beforeskip={0.5\baselineskip},
-        afterskip={0.5\baselineskip},
-    },
-	subsubsection={ %左对齐，小4，黑体，前后0.3行
-		format={\raggedright\zihao{-4}\hei},
-		name={,.},
-		aftername={\,\,},
-		indent={2em},
-		number=\arabic{subsubsection},
-		beforeskip={0.3\baselineskip},
-		afterskip={0.3\baselineskip},
-	},
+            format={\raggedright\zihao{-4}\kai\textbf},
+            aftername={\quad},
+            beforeskip={0.5\baselineskip},
+            afterskip={0.5\baselineskip},
+        },
+    subsubsection={ %左对齐，小4，黑体，前后0.3行
+            format={\raggedright\zihao{-4}\hei},
+            name={,.},
+            aftername={\,\,},
+            indent={2em},
+            number=\arabic{subsubsection},
+            beforeskip={0.3\baselineskip},
+            afterskip={0.3\baselineskip},
+        },
 }
 
 
@@ -230,11 +231,11 @@ BoldItalicFont=timesbi.ttf,
 \RequirePackage{titletoc}
 % \titlecontents{标题名}[左间距]{标题格式}{标题标志}{无序号标题}{指引线与页码}[下间距
 \titlecontents{chapter}[0pt]{\vspace{-0.25\baselineskip}\hei\zihao{-4}}{\thecontentslabel\ }{}
-    {\hspace{.5em}\titlerule*[4pt]{$\cdot$}{\zihao{-4}\contentspage}}[\vspace{0.02\baselineskip}]
+{\hspace{.5em}\titlerule*[4pt]{$\cdot$}{\zihao{-4}\contentspage}}[\vspace{0.02\baselineskip}]
 \titlecontents{section}[2em]{\vspace{-0.25\baselineskip}\songti\zihao{-4}}{\thecontentslabel\enspace}{}
-    {\hspace{.5em}\titlerule*[4pt]{$\cdot$}{\zihao{-4}\contentspage}}[\vspace{0.01\baselineskip}]
+{\hspace{.5em}\titlerule*[4pt]{$\cdot$}{\zihao{-4}\contentspage}}[\vspace{0.01\baselineskip}]
 \titlecontents{subsection}[4em]{\vspace{-0.25\baselineskip}\songti\zihao{-4}}{\thecontentslabel\enspace}{}
-    {\hspace{.5em}\titlerule*[4pt]{$\cdot$}{\zihao{-4}\contentspage}}[\vspace{0.01\baselineskip}]
+{\hspace{.5em}\titlerule*[4pt]{$\cdot$}{\zihao{-4}\contentspage}}[\vspace{0.01\baselineskip}]
 
 % 取消图片、表格目录中的章节空格
 \newcommand*{\noaddvspace}{\renewcommand*{\addvspace}[1]{}}
@@ -245,13 +246,13 @@ BoldItalicFont=timesbi.ttf,
 %表目录与图目录数字前增加“表”与“图”字，并且使目录行间距与section行间距一致
 
 \titlecontents{figure}[0pt]{\vspace{0.15\baselineskip}\songti\zihao{-4}}{\makebox[3em][l]{图~\thecontentslabel\quad}}{}
-    {\hspace{.5em}\titlerule*[4pt]{$\cdot$}\contentspage}[\vspace{0.15\baselineskip}]
+{\hspace{.5em}\titlerule*[4pt]{$\cdot$}\contentspage}[\vspace{0.15\baselineskip}]
 
 \titlecontents{table}[0pt]{\vspace{0.15\baselineskip}\songti\zihao{-4}}{\makebox[3em][l]{表~\thecontentslabel\quad}}{}
-    {\hspace{.5em}\titlerule*[4pt]{$\cdot$}\contentspage}[\vspace{0.15\baselineskip}]
+{\hspace{.5em}\titlerule*[4pt]{$\cdot$}\contentspage}[\vspace{0.15\baselineskip}]
 
 %%%%%%%%%%%% algorithm %%%%%%%%%%%%
-%\usepackage{algorithm}  %不好用，改用algorithm2e
+%\usepackage{algorithm}
 %\usepackage{algorithmic}
 %\floatname{algorithm}{算法}
 %
@@ -303,26 +304,26 @@ BoldItalicFont=timesbi.ttf,
 \let\endoldtable\endtable
 \renewenvironment{table}[1][h!]
 {\renewcommand{\arraystretch}{1.5}
-\oldtable[#1]\zihao{5}}
+    \oldtable[#1]\zihao{5}}
 {\renewcommand{\arraystretch}{1}
-\endoldtable}
+    \endoldtable}
 
 \let\oldtabular\tabular
 \let\endoldtabular\endtabular
 \renewenvironment{tabular}[1][h!]
 {\renewcommand{\arraystretch}{1.5}
-\oldtabular[#1]\zihao{5}}
+    \oldtabular[#1]\zihao{5}}
 {\renewcommand{\arraystretch}{1}
-\endoldtabular}
+    \endoldtabular}
 
 \RequirePackage{tabularx}
 \let\oldtabularx\tabularx
 \let\endoldtabularx\endtabularx
 \renewenvironment{tabularx}[2]
 {\renewcommand{\arraystretch}{1.5}
-\zihao{5}\oldtabularx{#1}{#2}}
+    \zihao{5}\oldtabularx{#1}{#2}}
 {\renewcommand{\arraystretch}{1}
-\endoldtabularx}
+    \endoldtabularx}
 
 
 \RequirePackage{array}
@@ -335,7 +336,7 @@ BoldItalicFont=timesbi.ttf,
 \DeclareGraphicsExtensions{.eps,.ps,.jpg,.bmp}
 \graphicspath{{img/}}
 \RequirePackage{pifont} % “秘级”后的五角星
-\RequirePackage{subfigure}
+\RequirePackage{subcaption}
 
 %%%%%%%%%% list %%%%%%%%%%
 % 列表
@@ -458,19 +459,19 @@ BoldItalicFont=timesbi.ttf,
 
 % 设置<附录>的图表编号与当前附录章号关联
 \newcommand{\rmrelation}{
-% 图、表、公式编号随 chapter 清零
-\@addtoreset{figure}{chapter}
-\@addtoreset{table}{chapter}
-\@addtoreset{equation}{chapter}
-%图、表、公式编号章节关联
-\renewcommand{\thefigure}{\ifnum \c@chapter>\z@ \thechapter.\fi \@arabic\c@figure}
-\renewcommand{\thetable}{\ifnum \c@chapter>\z@ \thechapter.\fi \@arabic\c@table}
-\renewcommand{\theequation}{\ifnum \c@chapter>\z@ \thechapter.\fi \@arabic\c@equation}
+    % 图、表、公式编号随 chapter 清零
+    \@addtoreset{figure}{chapter}
+    \@addtoreset{table}{chapter}
+    \@addtoreset{equation}{chapter}
+    % 图、表、公式编号章节关联
+    \renewcommand{\thefigure}{\ifnum \c@chapter>\z@ \thechapter.\fi \@arabic\c@figure}
+    \renewcommand{\thetable}{\ifnum \c@chapter>\z@ \thechapter.\fi \@arabic\c@table}
+    \renewcommand{\theequation}{\ifnum \c@chapter>\z@ \thechapter.\fi \@arabic\c@equation}
 }
 
 \let\oldappendix\appendix
 \renewcommand{\appendix}{
-\oldappendix\rmrelation
+    \oldappendix\rmrelation
 }
 
 
@@ -520,8 +521,8 @@ BoldItalicFont=timesbi.ttf,
         \raisebox{-.2cm}[0pt][0pt]{
             \zihao{5}\hei
             \begin{tabular}{l}
-                学校代码：\bf\suda@unicode\\[.1ex]
-                学\qquad 号：\bf\suda@studentID\\[.1ex]
+                学校代码：\bf\suda@unicode        \\[.1ex]
+                学\qquad 号：\bf\suda@studentID \\[.1ex]
             \end{tabular}
         }
         \vskip 20bp
@@ -534,27 +535,39 @@ BoldItalicFont=timesbi.ttf,
             \includegraphics[width=130pt]{img/SchoolMark.jpg}
             ~~\\
             \vskip 20bp
-            
             \begin{tabular}{p{0.5cm}p{9.2cm}}
-                &\dlmu[9.2cm]{\zihao{4}\hei{\suda@thesistitle}}\\ %[.4ex]%\hline
-                &\dlmu[9.2cm]{} \\
-                &\dlmu[9.2cm]{\zihao{4}{\suda@thesistitleeng}} \\%[.4ex]
+                % 中文标题第一行
+                \ifx\suda@coverthesistitlechone\@empty\else
+                 & \dlmu[9.2cm]{\zihao{4}\hei{\suda@coverthesistitlechone}} \\
+                \fi
+                % 中文标题第二行
+                \ifx\suda@coverthesistitlechtwo\@empty\else
+                 & \dlmu[9.2cm]{\zihao{4}\hei{\suda@coverthesistitlechtwo}} \\
+                \fi
+                % 英文标题第一行
+                \ifx\suda@coverthesistitleengone\@empty\else
+                 & \dlmu[9.2cm]{\zihao{4}\suda@coverthesistitleengone}      \\
+                \fi
+                % 英文标题第二行
+                \ifx\suda@coverthesistitleengtwo\@empty\else
+                 & \dlmu[9.2cm]{\zihao{4}\suda@coverthesistitleengtwo}      \\
+                \fi
             \end{tabular}
             \vskip 20bp
             ~~\\
             {
-                \zihao{4}\hei
-                \begin{tabular}{p{3cm}p{7cm}}
-                    研~究~生~姓~名&\ulinecvcbc{\suda@thesisauthor}\\[.4ex]
-                    指导教师姓名 & \ulinecvcbc{%
-                        \suda@teacher%
-                        \ifx\suda@subteacher\empty\else\quad \suda@subteacher\fi%
-                    }\\[.4ex]
-                    专~~~业~~~名~~称&\ulinecvcbc{\suda@major}\\[.4ex]
-                    研~~~究~~~方~~向&\ulinecvcbc{\suda@direct}\\[.4ex]
-                    所~~~在~~~院~~部&\ulinecvcbc{\suda@school}\\[.4ex]
-                    论文提交日期&\ulinecvcbc{\suda@thesisdateyear ~~年~~\suda@thesisdatemonth ~~月}\\[.4ex]
-                \end{tabular}
+            \zihao{4}\hei
+            \begin{tabular}{p{3cm}p{7cm}}
+                研~究~生~姓~名    & \ulinecvcbc{\suda@thesisauthor}                                  \\[.4ex]
+                指导教师姓名       & \ulinecvcbc{                                                     %
+                    \suda@teacher%
+                    \ifx\suda@subteacher\empty\else\quad \suda@subteacher\fi%
+                }                                                                               \\[.4ex]
+                专~~~业~~~名~~称 & \ulinecvcbc{\suda@major}                                         \\[.4ex]
+                研~~~究~~~方~~向 & \ulinecvcbc{\suda@direct}                                        \\[.4ex]
+                所~~~在~~~院~~部 & \ulinecvcbc{\suda@school}                                        \\[.4ex]
+                论文提交日期       & \ulinecvcbc{\suda@thesisdateyear ~~年~~\suda@thesisdatemonth ~~月} \\[.4ex]
+            \end{tabular}
             }
         \end{center}
     \end{titlepage}
@@ -565,7 +578,7 @@ BoldItalicFont=timesbi.ttf,
     \thispagestyle{empty}
     \addtocounter{page}{-1}
     \newpage
-    }
+}
 
 % 英文首页
 \newcommand{\titleeng}{
@@ -573,38 +586,38 @@ BoldItalicFont=timesbi.ttf,
     \thispagestyle{empty}
     \vspace*{\stretch{1}}
     \begin{center}
-    \begin{minipage}[h]{.8\textwidth}
-    	\begin{spacing}{2}
-        	\centering{\zihao{-2}\textbf{\suda@thesistitleeng}}
-        \end{spacing}
-    \end{minipage}
-    \vskip 20bp
-    \begin{minipage}[h]{.75\textwidth}
-        \centering{\zihao{-3}\suda@thesissubtitleeng}
-    \end{minipage}
-    \vspace*{\stretch{1}}
-    ~~\\
+        \begin{minipage}[h]{.8\textwidth}
+            \begin{spacing}{2}
+                \centering{\zihao{-2}\textbf{\suda@thesistitleeng}}
+            \end{spacing}
+        \end{minipage}
+        \vskip 20bp
+        \begin{minipage}[h]{.75\textwidth}
+            \centering{\zihao{-3}\suda@thesissubtitleeng}
+        \end{minipage}
+        \vspace*{\stretch{1}}
+        ~~\\
         {\zihao{4}A Dissertation Submitted for the Degree of \suda@degreeeng}\\
         \vskip 110bp
         \begin{center}
             \zihao{-3}
             \ifsuda@twoteacher
                 \begin{tabular}{rl}
-                    \textbf{Candidate:\ }&\textbf{\suda@thesisauthoreng}\\[0.5ex]
-                    \textbf{Supervisor:\ }&\textbf{\suda@teacherdegreeeng ~~\suda@teachereng}\\
-                    ~~ & \textbf{\suda@subteacherdegreeeng ~~\suda@subteachereng}\\
+                    \textbf{Candidate:\ }  & \textbf{\suda@thesisauthoreng}                           \\[0.5ex]
+                    \textbf{Supervisor:\ } & \textbf{\suda@teacherdegreeeng ~~\suda@teachereng}       \\
+                    ~~                     & \textbf{\suda@subteacherdegreeeng ~~\suda@subteachereng} \\
                 \end{tabular}
             \else
                 \begin{tabular}{rl}
-                    \textbf{Candidate:\ }&\textbf{\suda@thesisauthoreng}\\[0.5ex]
-                    \textbf{Supervisor:\ }&\textbf{\suda@teacherdegreeeng ~~\suda@teachereng}\\
+                    \textbf{Candidate:\ }  & \textbf{\suda@thesisauthoreng}                     \\[0.5ex]
+                    \textbf{Supervisor:\ } & \textbf{\suda@teacherdegreeeng ~~\suda@teachereng} \\
                 \end{tabular}
             \fi
         \end{center}
         \vskip 125bp
         \zihao{3}{
-        \suda@schooleng \\[1.8ex]
-        \suda@universityeng , Suzhou, China}
+            \suda@schooleng \\[1.8ex]
+            \suda@universityeng , Suzhou, China}
     \end{center}
 }
 
@@ -615,8 +628,8 @@ BoldItalicFont=timesbi.ttf,
 \newenvironment{cabstract}{
     \newpage
     \chapter*{\zihao{-2}{\suda@thesistitle}\\
-    \vspace{2ex}
-    \centerline{\hei\zihao{-2}{摘~~~~要}}}
+      \vspace{2ex}
+      \centerline{\hei\zihao{-2}{摘~~~~要}}}
     %\vspace{5ex}
     \setlength{\parindent}{24bp}
 }
@@ -625,9 +638,9 @@ BoldItalicFont=timesbi.ttf,
 % 英文摘要
 \newenvironment{eabstract}{
     % \newpage1
-    \chapter*{\zihao{-2}{\textbf{\suda@thesistitleeng}} \\ 
-    \vspace{2ex}
-    \centerline{\zihao{-2}{\textbf{Abstract}}}}
+    \chapter*{\zihao{-2}{\textbf{\suda@thesistitleeng}} \\
+      \vspace{2ex}
+      \centerline{\zihao{-2}{\textbf{Abstract}}}}
     \setlength{\parindent}{24bp}
 }
 
@@ -635,8 +648,8 @@ BoldItalicFont=timesbi.ttf,
 \newenvironment{achievements}{
     \newpage
     \chapter*{\zihao{-2}{攻读学位期间的成果}\\
-    \vspace{2ex}
-    \centerline{\hei\zihao{-2}{}}}
+      \vspace{2ex}
+      \centerline{\hei\zihao{-2}{}}}
     %\vspace{5ex}
     \setlength{\parindent}{24bp}
 }
@@ -662,6 +675,7 @@ BoldItalicFont=timesbi.ttf,
     \def\suda@university{#1}
     \def\suda@universityeng{#2}
 }
+
 % 学院
 \def\suda@school{}
 \def\suda@schooleng{}
@@ -669,6 +683,7 @@ BoldItalicFont=timesbi.ttf,
     \def\suda@school{#1}
     \def\suda@schooleng{#2}
 }
+
 % 专业
 \def\suda@major{}
 \def\suda@majoreng{}
@@ -676,11 +691,13 @@ BoldItalicFont=timesbi.ttf,
     \def\suda@major{#1}
     \def\suda@majoreng{#2}
 }
+
 % 学位类型
 \def\suda@degreetype{}
 \newcommand{\degreetype}[1]{%
     \def\suda@degreetype{#1}
 }
+
 % 方向
 \def\suda@direct{}
 \def\suda@directeng{}
@@ -688,6 +705,7 @@ BoldItalicFont=timesbi.ttf,
     \def\suda@direct{#1}
     \def\suda@directeng{#2}
 }
+
 % 论文标题和副标题
 \def\suda@thesistitle{}
 \def\suda@thesissubtitle{}
@@ -699,6 +717,23 @@ BoldItalicFont=timesbi.ttf,
     \def\suda@thesistitleeng{#2}
     %\def\suda@thesissubtitleeng{#4}
 }
+
+% 封面中文标题
+\def\suda@coverthesistitlechone{\@empty}
+\def\suda@coverthesistitlechtwo{\@empty}
+\newcommand{\coverthesistitlech}[2]{%
+    \def\suda@coverthesistitlechone{#1}%
+    \def\suda@coverthesistitlechtwo{#2}%
+}
+
+% 封面英文标题
+\def\suda@coverthesistitleengone{\@empty}
+\def\suda@coverthesistitleengtwo{\@empty}
+\newcommand{\coverthesistitleeng}[2]{%
+    \def\suda@coverthesistitleengone{#1}%
+    \def\suda@coverthesistitleengtwo{#2}%
+}
+
 % 作者
 \def\suda@thesisauthor{}
 \def\suda@thesisauthoreng{}
@@ -706,12 +741,14 @@ BoldItalicFont=timesbi.ttf,
     \def\suda@thesisauthor{#1}
     \def\suda@thesisauthoreng{#2}
 }
+
 % 是否有副指导老师，默认没有
 \newif\ifsuda@twoteacher
 \suda@twoteacherfalse
 \newcommand{\twoteacher}{%
     \suda@twoteachertrue
 }
+
 % 指导老师
 \def\suda@teacher{}
 \def\suda@teachereng{}
@@ -719,6 +756,7 @@ BoldItalicFont=timesbi.ttf,
     \def\suda@teacher{#1}
     \def\suda@teachereng{#2}
 }
+
 % 副指导老师
 \def\suda@subteacher{}
 \def\suda@subteachereng{}
@@ -726,11 +764,13 @@ BoldItalicFont=timesbi.ttf,
     \def\suda@subteacher{#1}
     \def\suda@subteachereng{#2}
 }
+
 % 分类号
 \def\suda@category{}
 \newcommand{\category}[1]{%
     \def\suda@category{#1}
 }
+
 % 论文开始时间
 \def\suda@thesisbeginyear{}
 \def\suda@thesisbeginmonth{}
@@ -740,6 +780,7 @@ BoldItalicFont=timesbi.ttf,
     \def\suda@thesisbeginmonth{#2}
     \def\suda@thesisbeginday{#3}
 }
+
 % 论文结束时间
 \def\suda@thesisendyear{}
 \def\suda@thesisendmonth{}
@@ -749,6 +790,7 @@ BoldItalicFont=timesbi.ttf,
     \def\suda@thesisendmonth{#2}
     \def\suda@thesisendday{#3}
 }
+
 % 答辩时间
 \def\suda@defenseyear{}
 \def\suda@defensemonth{}
@@ -758,14 +800,17 @@ BoldItalicFont=timesbi.ttf,
     \def\suda@defensemonth{#2}
     \def\suda@defenseday{#3}
 }
+
 % 中文摘要关键字
 \def\suda@ckeyword{}
 \newcommand{\ckeyword}[1]{%
     \def\suda@ckeyword{#1}}
+
 % 英文摘要关键字
 \def\suda@ekeyword{}
 \newcommand{\ekeyword}[1]{%
     \def\suda@ekeyword{#1}}
+    
 % 学位
 \def\suda@degree{} % 中文首页和题名页
 \def\suda@degreeeng{} % 英文首页
@@ -786,16 +831,19 @@ BoldItalicFont=timesbi.ttf,
 \newcommand{\class}[1]{%
     \def\suda@class{#1}
 }
+
 % 单位代码
 \def\suda@unicode{1006}
 \newcommand{\unicode}[1]{%
     \def\suda@unicode{#1}
 }
+
 % 学号
 \def\suda@studentID{}
 \newcommand{\studentID}[1]{%
     \def\suda@studentID{#1}
 }
+
 % 论文时间
 \def\suda@thesisdateyear{}
 \def\suda@thesisdatemonth{}
@@ -803,16 +851,19 @@ BoldItalicFont=timesbi.ttf,
     \def\suda@thesisdateyear{#1}
     \def\suda@thesisdatemonth{#2}
 }
+
 % 保密等级
 \def\suda@mibao{}
 \newcommand{\mibao}[1]{%
     \def\suda@mibao{#1}
 }
+
 % 研究方向
 \def\suda@direction{}
 \newcommand{\direction}[1]{
     \def\suda@direction{#1}
 }
+
 % 导师职称
 \def\suda@teacherdegree{}
 \def\suda@teacherdegreeeng{}
@@ -820,6 +871,7 @@ BoldItalicFont=timesbi.ttf,
     \def\suda@teacherdegree{#1}
     \def\suda@teacherdegreeeng{#2}
 }
+
 % 副导师职称
 \def\suda@subteacherdegree{}
 \def\suda@subteacherdegreeeng{}
@@ -827,16 +879,19 @@ BoldItalicFont=timesbi.ttf,
     \def\suda@subteacherdegree{#1}
     \def\suda@subteacherdegreeeng{#2}
 }
+
 % 申请学位级别(题名页)
 \def\suda@appdegree{}
 \newcommand{\applydegree}[1]{%
     \def\suda@appdegree{#1}
 }
+
 % 论文编号
 \def\suda@thesisID{}
 \newcommand{\thesisID}[1]{%
     \def\suda@thesisID{#1}
 }
+
 % 论文提交时间
 \def\suda@commityear{}
 \def\suda@commitmonth{}
@@ -846,6 +901,7 @@ BoldItalicFont=timesbi.ttf,
     \def\suda@commitmonth{#2}
     \def\suda@commitday{#3}
 }
+
 % 授予学位时间
 \def\suda@awardyear{}
 \def\suda@awardmonth{}
