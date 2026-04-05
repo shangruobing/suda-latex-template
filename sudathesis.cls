@@ -10,7 +10,9 @@
 % 模板声明
 
 \NeedsTeXFormat{LaTeX2e}[2007/10/19]
-\ProvidesClass{sudathesis}[2012/07/06 v0.8 The LaTeX template for thesis of suda]
+\ProvidesClass{sudathesis}
+[2012/07/06 v0.8
+    The LaTeX template for thesis of suda]
 \typeout{Document Class `sudathesis' by CHAOJIAYUAN (2017/03)}
 
 %%%%%%%%%% class options %%%%%%%%%%
@@ -47,10 +49,7 @@
 
 % \setmainfont{Times New Roman}
 % * 主要英文字体：使用本地的【times】字体文件
-\setmainfont[
-    Path=fonts/,
-    BoldFont=timesbd.ttf,
-    ItalicFont=timesi.ttf,
+\setmainfont[Path=fonts/,BoldFont=timesbd.ttf,ItalicFont=timesi.ttf,
     BoldItalicFont=timesbi.ttf,
 ]{times.ttf}
 
@@ -75,9 +74,9 @@
 \newcommand{\song}{\CJKfamily{song}}
 
 \newcommand{\xiaochuhao}{\fontsize{32pt}{\baselineskip}\selectfont}
-\newcommand{\xiaoer}{\fontsize{18pt}{27pt}\selectfont}      % 小二, 1.5倍行距
-\newcommand{\sihao}{\fontsize{14pt}{21pt}\selectfont}       % 四号, 1.5倍行距
-\newcommand{\xiaosi}{\fontsize{12pt}{18pt}\selectfont}      % 小四, 1.5倍行距
+\newcommand{\xiaoer}{\fontsize{18pt}{27pt}\selectfont}          % 小二, 1.5行距
+\newcommand{\sihao}{\fontsize{14pt}{21pt}\selectfont}            % 四号, 1.5 倍行距
+\newcommand{\xiaosi}{\fontsize{12pt}{18pt}\selectfont}  % 小四, 1.5倍行距
 
 
 %%%%%%%%%% color %%%%%%%%%%
@@ -170,7 +169,7 @@
 
 % \linespread{1.5}\selectfont    %1.5行距
 % Word 中的“单倍行距”跟字体有关，中易几个字体的“单倍行距”是字号的约 1.30 倍，Times New Roman 的是字号的 1.15倍。Word 中的 n 倍行距是在“单倍行距”上再乘的倍数。比如中易宋体 1.5 倍行距，是字号的 1.3 * .5 = 1.95 倍。
-% ctex 设置的 \baselineskip 已经是字号的 1.2 倍，如果设置 \linespread{1.5}\selectfont，行距是字号的 1.2 * 1.5 = 1.8 倍。正确的是 \linespread{1.625}\selectfont，其中 1.625 = 1.3 * 1.5 / 1.2，而且需要 \selectfont 才能生效。当然这里假设是中易字体，如果是西文字体，其中的 1.3 也要换成对应字体的倍数，
+%ctex 设置的 \baselineskip 已经是字号的 1.2 倍，如果设置 \linespread{1.5}\selectfont，行距是字号的 1.2 * 1.5 = 1.8 倍。正确的是 \linespread{1.625}\selectfont，其中 1.625 = 1.3 * 1.5 / 1.2，而且需要 \selectfont 才能生效。当然这里假设是中易字体，如果是西文字体，其中的 1.3 也要换成对应字体的倍数，
 % https://github.com/TheNetAdmin/zjuthesis/issues/125
 \linespread{1.625}\selectfont
 \setlength{\topskip}{0em}
@@ -178,7 +177,7 @@
 \setlength{\parskip}{0.2\baselineskip}   %段间距
 \setlength{\floatsep}{3pt plus 0.1pt minus 0.1pt}      % 图形之间或图形与正文之间的距离
 \setlength{\abovecaptionskip}{10pt plus 1pt minus 1pt} % 图形中的图与标题之间的距离
-\setlength{\belowcaptionskip}{3pt plus 1pt minus 1pt}  % 表格中的表与标题之间的距离
+\setlength{\belowcaptionskip}{3pt plus 1pt minus 1pt} % 表格中的表与标题之间的距离
 
 
 %%%%%%%%%% title %%%%%%%%%%
@@ -252,7 +251,7 @@
 {\hspace{.5em}\titlerule*[4pt]{$\cdot$}\contentspage}[\vspace{0.15\baselineskip}]
 
 %%%%%%%%%%%% algorithm %%%%%%%%%%%%
-%\usepackage{algorithm}
+%\usepackage{algorithm}  %不好用，改用algorithm2e
 %\usepackage{algorithmic}
 %\floatname{algorithm}{算法}
 %
@@ -336,7 +335,7 @@
 \DeclareGraphicsExtensions{.eps,.ps,.jpg,.bmp}
 \graphicspath{{img/}}
 \RequirePackage{pifont} % “秘级”后的五角星
-\RequirePackage{subcaption}
+% \RequirePackage{subfigure}
 
 %%%%%%%%%% list %%%%%%%%%%
 % 列表
@@ -463,7 +462,7 @@
     \@addtoreset{figure}{chapter}
     \@addtoreset{table}{chapter}
     \@addtoreset{equation}{chapter}
-    % 图、表、公式编号章节关联
+    %图、表、公式编号章节关联
     \renewcommand{\thefigure}{\ifnum \c@chapter>\z@ \thechapter.\fi \@arabic\c@figure}
     \renewcommand{\thetable}{\ifnum \c@chapter>\z@ \thechapter.\fi \@arabic\c@table}
     \renewcommand{\theequation}{\ifnum \c@chapter>\z@ \thechapter.\fi \@arabic\c@equation}
@@ -535,23 +534,11 @@
             \includegraphics[width=130pt]{img/SchoolMark.jpg}
             ~~\\
             \vskip 20bp
+
             \begin{tabular}{p{0.5cm}p{9.2cm}}
-                % 中文标题第一行
-                \ifx\suda@coverthesistitlechone\@empty\else
-                 & \dlmu[9.2cm]{\zihao{4}\hei{\suda@coverthesistitlechone}} \\
-                \fi
-                % 中文标题第二行
-                \ifx\suda@coverthesistitlechtwo\@empty\else
-                 & \dlmu[9.2cm]{\zihao{4}\hei{\suda@coverthesistitlechtwo}} \\
-                \fi
-                % 英文标题第一行
-                \ifx\suda@coverthesistitleengone\@empty\else
-                 & \dlmu[9.2cm]{\zihao{4}\suda@coverthesistitleengone}      \\
-                \fi
-                % 英文标题第二行
-                \ifx\suda@coverthesistitleengtwo\@empty\else
-                 & \dlmu[9.2cm]{\zihao{4}\suda@coverthesistitleengtwo}      \\
-                \fi
+                 & \dlmu[9.2cm]{\zihao{4}\hei{\suda@thesistitle}}        \\ %[.4ex]%\hline
+                 & \dlmu[9.2cm]{\zihao{4}{\suda@coverthesistitleengone}} \\
+                 & \dlmu[9.2cm]{\zihao{4}{\suda@coverthesistitleengtwo}} \\
             \end{tabular}
             \vskip 20bp
             ~~\\
@@ -638,7 +625,8 @@
 % 英文摘要
 \newenvironment{eabstract}{
     % \newpage1
-    \chapter*{\zihao{-2}{\textbf{\suda@thesistitleeng}} \\
+    % \chapter*{\zihao{-2}{\textbf{\suda@thesistitleeng}} \\
+    \chapter*{\zihao{-2}{\textbf{\suda@coverthesistitleengone \\ \suda@coverthesistitleengtwo}} \\
       \vspace{2ex}
       \centerline{\zihao{-2}{\textbf{Abstract}}}}
     \setlength{\parindent}{24bp}
@@ -675,7 +663,6 @@
     \def\suda@university{#1}
     \def\suda@universityeng{#2}
 }
-
 % 学院
 \def\suda@school{}
 \def\suda@schooleng{}
@@ -683,7 +670,6 @@
     \def\suda@school{#1}
     \def\suda@schooleng{#2}
 }
-
 % 专业
 \def\suda@major{}
 \def\suda@majoreng{}
@@ -691,13 +677,11 @@
     \def\suda@major{#1}
     \def\suda@majoreng{#2}
 }
-
 % 学位类型
 \def\suda@degreetype{}
 \newcommand{\degreetype}[1]{%
     \def\suda@degreetype{#1}
 }
-
 % 方向
 \def\suda@direct{}
 \def\suda@directeng{}
@@ -705,12 +689,13 @@
     \def\suda@direct{#1}
     \def\suda@directeng{#2}
 }
-
 % 论文标题和副标题
 \def\suda@thesistitle{}
 \def\suda@thesissubtitle{}
 \def\suda@thesistitleeng{}
 \def\suda@thesissubtitleeng{}
+
+% 论文标题
 \newcommand{\thesistitle}[2]{%
     \def\suda@thesistitle{#1}
     %\def\suda@thesissubtitle{#2}
@@ -718,17 +703,10 @@
     %\def\suda@thesissubtitleeng{#4}
 }
 
-% 封面中文标题
-\def\suda@coverthesistitlechone{\@empty}
-\def\suda@coverthesistitlechtwo{\@empty}
-\newcommand{\coverthesistitlech}[2]{%
-    \def\suda@coverthesistitlechone{#1}%
-    \def\suda@coverthesistitlechtwo{#2}%
-}
+\def\suda@coverthesistitleengone{}
+\def\suda@coverthesistitleengtwo{}
 
 % 封面英文标题
-\def\suda@coverthesistitleengone{\@empty}
-\def\suda@coverthesistitleengtwo{\@empty}
 \newcommand{\coverthesistitleeng}[2]{%
     \def\suda@coverthesistitleengone{#1}%
     \def\suda@coverthesistitleengtwo{#2}%
@@ -741,14 +719,12 @@
     \def\suda@thesisauthor{#1}
     \def\suda@thesisauthoreng{#2}
 }
-
 % 是否有副指导老师，默认没有
 \newif\ifsuda@twoteacher
 \suda@twoteacherfalse
 \newcommand{\twoteacher}{%
     \suda@twoteachertrue
 }
-
 % 指导老师
 \def\suda@teacher{}
 \def\suda@teachereng{}
@@ -756,7 +732,6 @@
     \def\suda@teacher{#1}
     \def\suda@teachereng{#2}
 }
-
 % 副指导老师
 \def\suda@subteacher{}
 \def\suda@subteachereng{}
@@ -764,13 +739,11 @@
     \def\suda@subteacher{#1}
     \def\suda@subteachereng{#2}
 }
-
 % 分类号
 \def\suda@category{}
 \newcommand{\category}[1]{%
     \def\suda@category{#1}
 }
-
 % 论文开始时间
 \def\suda@thesisbeginyear{}
 \def\suda@thesisbeginmonth{}
@@ -780,7 +753,6 @@
     \def\suda@thesisbeginmonth{#2}
     \def\suda@thesisbeginday{#3}
 }
-
 % 论文结束时间
 \def\suda@thesisendyear{}
 \def\suda@thesisendmonth{}
@@ -790,7 +762,6 @@
     \def\suda@thesisendmonth{#2}
     \def\suda@thesisendday{#3}
 }
-
 % 答辩时间
 \def\suda@defenseyear{}
 \def\suda@defensemonth{}
@@ -800,17 +771,14 @@
     \def\suda@defensemonth{#2}
     \def\suda@defenseday{#3}
 }
-
 % 中文摘要关键字
 \def\suda@ckeyword{}
 \newcommand{\ckeyword}[1]{%
     \def\suda@ckeyword{#1}}
-
 % 英文摘要关键字
 \def\suda@ekeyword{}
 \newcommand{\ekeyword}[1]{%
     \def\suda@ekeyword{#1}}
-    
 % 学位
 \def\suda@degree{} % 中文首页和题名页
 \def\suda@degreeeng{} % 英文首页
@@ -831,19 +799,16 @@
 \newcommand{\class}[1]{%
     \def\suda@class{#1}
 }
-
 % 单位代码
 \def\suda@unicode{1006}
 \newcommand{\unicode}[1]{%
     \def\suda@unicode{#1}
 }
-
 % 学号
 \def\suda@studentID{}
 \newcommand{\studentID}[1]{%
     \def\suda@studentID{#1}
 }
-
 % 论文时间
 \def\suda@thesisdateyear{}
 \def\suda@thesisdatemonth{}
@@ -851,19 +816,16 @@
     \def\suda@thesisdateyear{#1}
     \def\suda@thesisdatemonth{#2}
 }
-
 % 保密等级
 \def\suda@mibao{}
 \newcommand{\mibao}[1]{%
     \def\suda@mibao{#1}
 }
-
 % 研究方向
 \def\suda@direction{}
 \newcommand{\direction}[1]{
     \def\suda@direction{#1}
 }
-
 % 导师职称
 \def\suda@teacherdegree{}
 \def\suda@teacherdegreeeng{}
@@ -871,7 +833,6 @@
     \def\suda@teacherdegree{#1}
     \def\suda@teacherdegreeeng{#2}
 }
-
 % 副导师职称
 \def\suda@subteacherdegree{}
 \def\suda@subteacherdegreeeng{}
@@ -879,19 +840,16 @@
     \def\suda@subteacherdegree{#1}
     \def\suda@subteacherdegreeeng{#2}
 }
-
 % 申请学位级别(题名页)
 \def\suda@appdegree{}
 \newcommand{\applydegree}[1]{%
     \def\suda@appdegree{#1}
 }
-
 % 论文编号
 \def\suda@thesisID{}
 \newcommand{\thesisID}[1]{%
     \def\suda@thesisID{#1}
 }
-
 % 论文提交时间
 \def\suda@commityear{}
 \def\suda@commitmonth{}
@@ -901,7 +859,6 @@
     \def\suda@commitmonth{#2}
     \def\suda@commitday{#3}
 }
-
 % 授予学位时间
 \def\suda@awardyear{}
 \def\suda@awardmonth{}

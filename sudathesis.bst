@@ -57,7 +57,7 @@ FUNCTION {load.config}
   #0 'show.preprint :=
   #0 'show.note :=
   #0 'show.english.translation :=
-  #99 'bibliography.et.al.min :=
+  #4 'bibliography.et.al.min :=
 }
 
 ENTRY
@@ -1577,16 +1577,16 @@ FUNCTION {incollection}
   if$
   new.block
   format.title "title" output.check
-  "A" set.entry.mark
+  "C" set.entry.mark
   format.mark "" output.after
   new.block
   format.translators output
-  % new.slash
+  new.slash
   format.editors output
   new.block
   format.series.vol.num.booktitle "booktitle" output.check
-  "C" set.entry.mark
-  format.mark "" output.after
+  % "C" set.entry.mark
+  % format.mark "" output.after
   new.block
   format.edition output
   new.block
@@ -1598,7 +1598,7 @@ FUNCTION {incollection}
   format.extracted.pages bbl.colon output.after
   % format.urldate "" output.after
   % output.url
-  % output.doi
+  output.doi
   new.block
   format.note output
   fin.entry
@@ -1671,7 +1671,7 @@ FUNCTION {article}
   format.journal.pages "" output.after
   % format.urldate "" output.after
   % output.url
-  % output.doi
+  output.doi
   new.block
   format.note output
   fin.entry

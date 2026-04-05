@@ -88,7 +88,7 @@
 % 正文页码是阿拉伯数字
 \pagenumbering{arabic}
 
-% 【 正文】
+% 【正文】
 
 \include{content/1_introduction}
 \include{content/2_chapter}
@@ -104,11 +104,19 @@
 
 % 附页标题样式
 \backmatter
-% 附页
-\include{content/achievement}
-\include{content/thanks}
 
-\includepdf[pages=-]{pdf/blank.pdf}
-\includepdf[pages=-]{pdf/DEMO_答辩决议书.pdf}
+% 附页
+\iffinalversion
+    % 最终版
+    % 最终版添加发表刊物和致谢
+    % 附页
+    \include{content/achievement}
+    \include{content/thanks}
+
+    \includepdf[pages=-]{pdf/blank.pdf}
+    \includepdf[pages=-]{pdf/DEMO_答辩决议书.pdf}
+\else
+    % 送审版
+\fi
 
 \end{document}
