@@ -1,5 +1,5 @@
 % !Mode:: "TeX:UTF-8"
-\documentclass[master,openany,twoside,a4paper,AutoFakeBold]{sudathesis}
+\documentclass[master,openright,twoside,a4paper,AutoFakeBold]{sudathesis}
 
 % == 内置的package ==
 % 添加pdf文件 includepdf命令
@@ -18,16 +18,11 @@
 \usepackage{multirow}   % 表格合并单元格
 \usepackage{booktabs}  % 表格用于创建漂亮的水平线
 \usepackage{stfloats}     % 跨栏图片*/表格*美化
-%\usepackage{svg}           % 支持插入矢量图
 \usepackage{pifont}        % 勾叉符号
-% \usepackage{CJKutf8}    % 支持Unicode字符 ├ └ ─ # Package ctexhook: Package CJKutf8' can not be loaded with xeCJK'.
 \usepackage[skins]{tcolorbox}  % 文本框
 \tcbuselibrary{breakable}% 支持文本框跨页
 \usepackage{boites, boites_exemples}
 \usepackage{amsmath}
-%\usepackage[defaultcolor={red}]{changes}           % 开启修订模式
-%\usepackage[final]{changes} % 关闭修订模式
-% == ===================== ==
 
 \newif\iffinalversion
 % 设置为送审版
@@ -41,23 +36,21 @@
 \begin{document}
 
 \iffinalversion
-    % 最终版
-    % 最终版通过maketitle来生成封面
-    \maketitle
-    \includepdf[pages=-]{pdf/DEMO_独创声明.pdf}
+    % 最终版通过导入pdf文件来生成封面
+    \includepdf[pages=-]{pdf/封面.pdf}
     \includepdf[pages=-]{pdf/blank.pdf}
-    \includepdf[pages=-]{pdf/DEMO_授权声明.pdf}
+    \includepdf[pages=-]{pdf/学位论文使用授权声明.pdf}
     \includepdf[pages=-]{pdf/blank.pdf}
 \else
     % 送审版
     % 送审版通过导入pdf文件来生成封面
-    \includepdf[pages=-]{pdf/DEMO_送审封面.pdf}
+    \includepdf[pages=-]{pdf/送审封面.pdf}
 \fi
 
 % 【摘要】
 % 正文前页码是大写罗马字母
 \pagenumbering{Roman}
-% 前言页眉页脚样式 % 摘要
+% 前言页眉页脚样式
 \pagestyle{cnfrontmatter}
 \include{content/0_1_abstract-zh}
 
@@ -88,6 +81,12 @@
 % 正文页码是阿拉伯数字
 \pagenumbering{arabic}
 
+% === 关闭正文章节强制奇数页开头的限制 ===
+\makeatletter
+\@openrightfalse
+\makeatother
+% ================================================
+
 % 【正文】
 
 \include{content/1_introduction}
@@ -112,9 +111,7 @@
     % 附页
     \include{content/achievement}
     \include{content/thanks}
-
-    \includepdf[pages=-]{pdf/blank.pdf}
-    \includepdf[pages=-]{pdf/DEMO_答辩决议书.pdf}
+    \includepdf[pages=-]{pdf/答辩决议书.pdf}
 \else
     % 送审版
 \fi

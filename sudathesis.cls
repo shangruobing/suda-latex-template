@@ -536,7 +536,8 @@
             \vskip 20bp
 
             \begin{tabular}{p{0.5cm}p{9.2cm}}
-                 & \dlmu[9.2cm]{\zihao{4}\hei{\suda@thesistitle}}        \\ %[.4ex]%\hline
+                 & \dlmu[9.2cm]{\zihao{4}{\suda@coverthesistitlechone}} \\
+                 & \dlmu[9.2cm]{\zihao{4}{\suda@coverthesistitlechtwo}} \\
                  & \dlmu[9.2cm]{\zihao{4}{\suda@coverthesistitleengone}} \\
                  & \dlmu[9.2cm]{\zihao{4}{\suda@coverthesistitleengtwo}} \\
             \end{tabular}
@@ -647,7 +648,7 @@
 % 首页重定义
 \renewcommand{\maketitle}{%
     \titlech
-    \titleeng
+    % \titleeng
     \songti
     \zihao{-4}
     \clearemptydoublepage
@@ -701,6 +702,15 @@
     %\def\suda@thesissubtitle{#2}
     \def\suda@thesistitleeng{#2}
     %\def\suda@thesissubtitleeng{#4}
+}
+
+\def\suda@coverthesistitlechone{}
+\def\suda@coverthesistitlechtwo{}
+
+% 封面中文标题
+\newcommand{\coverthesistitlech}[2]{%
+    \def\suda@coverthesistitlechone{#1}%
+    \def\suda@coverthesistitlechtwo{#2}%
 }
 
 \def\suda@coverthesistitleengone{}
