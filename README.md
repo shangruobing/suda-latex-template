@@ -2,8 +2,8 @@
 
 ## 特性
 
+- 更新至2026年6月，遵循苏大研究生学位论文最新要求
 - Overleaf, TeXPage, TeXLive 和 MacTex 均编译正常
-- 完全遵循苏大研究生学位论文基本格式
 - 内置字体文件
 - 详细的注释，若后续学校变更排版要求，方便自行修改
 
@@ -13,7 +13,7 @@
 2. 编辑 `content/0_0_info.tex` 填写论文基本信息
 3. 使用VSCode或终端编译（见下文详细说明）
 
-## 目录介绍
+### 目录介绍
 
 ```text
 ├── content/                  # 论文内容
@@ -23,6 +23,7 @@
 │   └── ...
 ├── fonts/                    # 字体文件
 ├── img/                      # 图片资源（校徽等）
+├── doc/                      # 额外的 docx 文件
 ├── pdf/                      # 额外的 pdf 文件
 ├── main.tex                  # 主文档
 ├── reference.bib             # 参考文献
@@ -31,18 +32,18 @@
 └── ...
 ```
 
-## 推荐环境
+### 推荐环境
 
 - 安装 `TeX` 发行版，`TexLive` 或 `MacTex`
 - 使用 `Visual Studio Code` 编辑器进行编辑，并安装 `LaTeX Workshop` 插件
 
-### 相关下载链接
+#### 相关下载链接
 
 - [TeXLive官网](https://tug.org/texlive/)
 - [TeXLive清华镜像](https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/)
 - [Visual Studio Code官网](https://code.visualstudio.com/)
 
-## 使用VSCode进行编译（推荐）
+### 使用VSCode进行编译（推荐）
 
 首先配置 `LaTeX Workshop` 插件：
 
@@ -68,7 +69,7 @@
 3.  点击 `Build LaTeX project`
 4.  在弹出菜单中，选择编译方案：`Recipe: xe->bibtex->xe*2`
 
-## 使用终端进行编译
+### 使用终端进行编译
 
 **使用 xelatex 进行编译，命令如下：**
 
@@ -108,6 +109,21 @@ make clear
 
 ## 常见问题
 
+### 关于封面、送审封面等页面的使用
+
+**问题**：在使用模板时，封面格式与学校要求不符。
+
+**解决方法**：
+
+1. 使用学校提供的 Word 模板生成封面、送审封面等页面，并将生成的 PDF 文件放入 `pdf/` 目录。
+2. 在 `main.tex` 中使用 `\includepdf` 命令引入这些 PDF 文件，例如：
+
+```latex
+\includepdf[pages=-]{pdf/封面.pdf}
+```
+
+---
+
 ### 参考文献显示异常或不显示
 
 **问题**：在 VSCode 中使用 LaTeX Workshop 的 `Recipe: xe->bibtex->xe*2` 编译后，参考文献显示异常或不显示。
@@ -134,3 +150,5 @@ make clear
    - 将其设置为 `false`
 
 完成后重新使用 `Recipe: xe->bibtex->xe*2` 编译，即可正确生成参考文献。
+
+---
